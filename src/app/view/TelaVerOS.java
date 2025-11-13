@@ -24,7 +24,6 @@ public class TelaVerOS extends JFrame {
 
         List<OrdemDeServico> ordens = GerenciadorOS.getOrdens();
 
-        // Novo array de colunas, incluindo "ID da OS"
         String[] colunas = {"ID da OS", "Cliente", "CPF", "Unidade", "Descrição"};
         DefaultTableModel model = new DefaultTableModel(colunas, 0);
 
@@ -34,7 +33,6 @@ public class TelaVerOS extends JFrame {
 
         for (OrdemDeServico os : ordens) {
             model.addRow(new Object[]{
-                    // Adicionando o ID da OS na primeira coluna
                     os.getIdOS(),
                     os.getCliente().getNome(),
                     os.getCliente().getCpf(),
@@ -47,7 +45,6 @@ public class TelaVerOS extends JFrame {
         tabela.setRowHeight(28);
         tabela.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
 
-        // Configuração de largura da coluna ID da OS para melhor visualização
         tabela.getColumnModel().getColumn(0).setPreferredWidth(80);
         tabela.getColumnModel().getColumn(1).setPreferredWidth(150);
         tabela.getColumnModel().getColumn(4).setPreferredWidth(300); // Descrição

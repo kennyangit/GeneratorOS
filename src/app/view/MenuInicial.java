@@ -24,8 +24,7 @@ public class MenuInicial {
                     opcoes[0]
             );
 
-            if (escolha == 0) { // Cadastrar Cliente
-                // ... código existente ...
+            if (escolha == 0) {
                 TelaCadastroCliente telaCadastro = new TelaCadastroCliente();
                 JDialog dialog = new JDialog();
                 dialog.setModal(true);
@@ -43,7 +42,7 @@ public class MenuInicial {
             } else if (escolha == 2) {
                 TelaVerOS telaVerOS = new TelaVerOS();
                 JDialog dialog = new JDialog();
-                dialog.setModal(true); // Faz com que o usuário tenha que fechar esta tela antes de interagir com outras.
+                dialog.setModal(true);
                 dialog.setContentPane(telaVerOS.getContentPane());
                 dialog.setTitle("Ordens de Serviço Registradas");
                 dialog.setSize(900, 600);
@@ -51,7 +50,7 @@ public class MenuInicial {
                 dialog.setLocationRelativeTo(null);
                 dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 dialog.setVisible(true);
-            } else { // Fechar ou cancelar / Encerrar Programa (índice 3 é Encerrar)
+            } else {
                 if (escolha == 3) {
                     System.exit(0);
                 }
@@ -63,7 +62,6 @@ public class MenuInicial {
     private static void gerarOS() {
         String[] opcoes = {"Cadastrar novo cliente", "Selecionar cliente existente"};
         int escolha = JOptionPane.showOptionDialog(
-                // ... código existente para seleção de opção ...
                 null,
                 "Deseja gerar OS com:",
                 "Gerar OS",
@@ -74,8 +72,7 @@ public class MenuInicial {
                 opcoes[0]
         );
 
-        if (escolha == 0) { // Cadastrar novo cliente
-            // ... código existente ...
+        if (escolha == 0) {
             TelaCadastroCliente telaCadastro = new TelaCadastroCliente();
             JDialog dialog = new JDialog();
             dialog.setModal(true);
@@ -87,7 +84,7 @@ public class MenuInicial {
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             dialog.setVisible(true);
 
-        } else if (escolha == 1) { // Selecionar cliente existente
+        } else if (escolha == 1) {
             List<Cliente> clientes = GerenciadorClientes.getClientes();
 
             if (clientes.isEmpty()) {
@@ -97,7 +94,6 @@ public class MenuInicial {
 
             String[] nomes = clientes.stream().map(Cliente::getNome).toArray(String[]::new);
             String nomeEscolhido = (String) JOptionPane.showInputDialog(
-                    // ... código existente para seleção de cliente ...
                     null,
                     "Selecione o cliente:",
                     "Clientes Cadastrados",
@@ -111,26 +107,14 @@ public class MenuInicial {
                 Cliente clienteSelecionado = GerenciadorClientes.buscarPorNome(nomeEscolhido);
                 String descricao = JOptionPane.showInputDialog("Digite a descrição da OS:");
 
-                // Verificação de descrição
                 if (descricao == null || descricao.trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Descrição da OS não pode ser vazia.", "Atenção", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                // ------------------------------------------------
-                // --- MODIFICAÇÕES CRUCIAIS A PARTIR DAQUI ---
-                // ------------------------------------------------
-
-                // 1. Gerar o ID da OS
                 String idOS = GerenciadorOS.gerarProximoIdOS();
-
-                // 2. Criar a nova OrdemDeServico com o ID
                 OrdemDeServico novaOS = new OrdemDeServico(idOS, clienteSelecionado, descricao);
-
-                // 3. Registrar a nova OS no GerenciadorOS
                 GerenciadorOS.adicionarOS(novaOS);
-
-                // 4. Exibir a mensagem de sucesso (com o ID)
                 JOptionPane.showMessageDialog(
                         null,
                         "OS registrada com sucesso!\n" +
@@ -141,7 +125,7 @@ public class MenuInicial {
                 );
             }
 
-        } else { // Fechar ou cancelar
+        } else {
             return;
         }
     }

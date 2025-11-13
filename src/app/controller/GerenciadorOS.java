@@ -19,11 +19,10 @@ public class GerenciadorOS {
         return ordens;
     }
 
-    // Novo método para gerar o ID no formato "OSXX"
+    // método para auto incrementar o id da OS
     public static String gerarProximoIdOS() {
-        // Formata o número para ter sempre pelo menos 2 dígitos (ex: 1 -> 01, 10 -> 10)
         String idFormatado = String.format("OS%02d", proximoId);
-        proximoId++; // Incrementa para o próximo
+        proximoId++;
         return idFormatado;
     }
 
