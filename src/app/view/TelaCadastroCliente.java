@@ -28,11 +28,11 @@ public class TelaCadastroCliente extends JFrame {
 
         // Painel principal de campos
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBorder(BorderFactory.createEmptyBorder(30, 0, 100, 0));
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 250, 100, 250));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL; // permite largura total
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridx = 0;
         gbc.weightx = 1.0;
@@ -44,6 +44,7 @@ public class TelaCadastroCliente extends JFrame {
         panel.add(new JLabel("Nome:"), gbc);
         gbc.gridy++;
         nomeField = new JTextField();
+        nomeField.setFont(new Font("Arial", Font.PLAIN, 17));
         nomeField.setPreferredSize(fieldSize);
         panel.add(nomeField, gbc);
 
@@ -51,6 +52,7 @@ public class TelaCadastroCliente extends JFrame {
         panel.add(new JLabel("CPF:"), gbc);
         gbc.gridy++;
         cpfField = new JTextField();
+        cpfField.setFont(new Font("Arial", Font.PLAIN, 17));
         cpfField.setPreferredSize(fieldSize);
         panel.add(cpfField, gbc);
 
@@ -58,6 +60,7 @@ public class TelaCadastroCliente extends JFrame {
         panel.add(new JLabel("Telefone:"), gbc);
         gbc.gridy++;
         telefoneField = new JTextField();
+        telefoneField.setFont(new Font("Arial", Font.PLAIN, 17));
         telefoneField.setPreferredSize(fieldSize);
         panel.add(telefoneField, gbc);
 
@@ -65,6 +68,7 @@ public class TelaCadastroCliente extends JFrame {
         panel.add(new JLabel("Unidade:"), gbc);
         gbc.gridy++;
         unidadeField = new JTextField();
+        unidadeField.setFont(new Font("Arial", Font.PLAIN, 17));
         unidadeField.setPreferredSize(fieldSize);
         panel.add(unidadeField, gbc);
 
@@ -72,6 +76,7 @@ public class TelaCadastroCliente extends JFrame {
         panel.add(new JLabel("Endereço:"), gbc);
         gbc.gridy++;
         enderecoField = new JTextField();
+        enderecoField.setFont(new Font("Arial", Font.PLAIN, 17));
         enderecoField.setPreferredSize(fieldSize);
         panel.add(enderecoField, gbc);
 
@@ -80,6 +85,8 @@ public class TelaCadastroCliente extends JFrame {
         JPanel botoesPanel = new JPanel(new FlowLayout());
         JButton btnSalvar = new JButton("Salvar");
         JButton btnVoltar = new JButton("Voltar");
+        btnSalvar.setPreferredSize(new Dimension(120, 30));
+        btnVoltar.setPreferredSize(new Dimension(120, 30));
         botoesPanel.add(btnSalvar);
         botoesPanel.add(btnVoltar);
         panel.add(botoesPanel, gbc);

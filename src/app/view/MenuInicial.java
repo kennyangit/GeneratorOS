@@ -3,6 +3,7 @@ package app.view;
 import app.controller.GerenciadorClientes;
 import app.controller.GerenciadorOS;
 import app.model.Cliente;
+import app.model.Funcionario;
 import app.model.OrdemDeServico;
 
 import javax.swing.*;
@@ -11,6 +12,8 @@ import java.util.List;
 public class MenuInicial {
 
     public static void exibirMenu() {
+        Funcionario.selecionarFuncionario();
+
         while (true) {
             String[] opcoes = {"Cadastrar Cliente", "Gerar OS", "Ver Ordens Registradas", "Encerrar Programa"};
             int escolha = JOptionPane.showOptionDialog(

@@ -1,25 +1,24 @@
 package app.controller;
 
 import app.model.OrdemDeServico;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorOS {
-    private static List<OrdemDeServico> ordens = new ArrayList<>();
-    // Contador estático para gerar o ID sequencial
+    private static final String ARQUIVO = "ordens.dat";
+    private static List<OrdemDeServico> ordens = carregarOrdens();
     private static int proximoId = 1;
 
     public static void adicionarOS(OrdemDeServico os) {
         ordens.add(os);
-        // O incremento deve ocorrer após a adição se for usado fora do Gerenciador
-        // Se o id for gerado aqui, o incremento ocorre após a geração.
+        salvarOrdens();
     }
 
     public static List<OrdemDeServico> getOrdens() {
         return ordens;
     }
 
-    // método para auto incrementar o id da OS
     public static String gerarProximoIdOS() {
         String idFormatado = String.format("OS%02d", proximoId);
         proximoId++;
@@ -28,5 +27,27 @@ public class GerenciadorOS {
 
     public static boolean existeOS() {
         return !ordens.isEmpty();
+    }
+
+    public static void salvarOrdens() {
+        try (java.io.ObjectOutputStream oos = new java.io.ObjectOutputStream(
+                new java.io.FileOutputStream("ordens.dat"))) {
+            oos.writeObject(ordens);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<OrdemDeServico> carregarOrdens() {
+        File file = new File(ARQUIVO);
+        if (!file.exists()) return new ArrayList<>();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            return (List<OrdemDeServico>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 }

@@ -1,6 +1,9 @@
 package app.model;
+import java.io.Serializable;
 
-public class OrdemDeServico {
+public class OrdemDeServico implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String idOS;
     private Cliente cliente;
     private String descricao;
@@ -21,5 +24,9 @@ public class OrdemDeServico {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
