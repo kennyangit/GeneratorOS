@@ -1,5 +1,6 @@
 package app.model;
 
+import app.controller.GerenciadorOS;
 import javax.swing.*;
 import java.io.Serializable;
 
@@ -45,9 +46,15 @@ public class Funcionario extends Pessoa implements Serializable {
         return novocliente;
     }
 
-    public OrdemDeServico criarOS(String descricao, String data, String horaminuto,  double valor) {
-        OrdemDeServico novaOS = new OrdemDeServico(descricao, data, horaminuto, valor);
-        return novaOS;
+    public OrdemDeServico criarOS(Cliente cliente, String descricao, String data, String hora, double valor) {
+        String id = GerenciadorOS.gerarProximoIdOS();
+        OrdemDeServico os = new OrdemDeServico(descricao, data, hora, valor);
+        os.setIdOS(id);
+        os.setCliente(cliente);
+
+        System.out.println("Funcionário " + getFuncionarioAtual() + " gerou a OS " + id);
+
+        return os;
     }
 
     public static String getFuncionarioAtual() {

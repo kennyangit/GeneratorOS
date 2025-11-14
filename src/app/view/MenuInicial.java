@@ -126,10 +126,8 @@ public class MenuInicial{
                     return;
                 }
 
-                String idOS = GerenciadorOS.gerarProximoIdOS();
-                OrdemDeServico novaOS = new OrdemDeServico(descricao, data, hora, valor);
-                novaOS.setIdOS(idOS);
-                novaOS.setCliente(clienteSelecionado);
+                Funcionario func = new Funcionario();
+                OrdemDeServico novaOS = func.criarOS(clienteSelecionado, descricao, data, hora, valor);
                 GerenciadorOS.adicionarOS(novaOS);
                 JOptionPane.showMessageDialog(null,
                         "ORDEM DE SERVIÇO\n\n" +
