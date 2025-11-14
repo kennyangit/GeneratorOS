@@ -2,6 +2,7 @@ package app.view;
 
 import app.controller.GerenciadorClientes;
 import app.model.Cliente;
+import app.model.Funcionario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -105,13 +106,12 @@ public class TelaCadastroCliente extends JFrame {
                     return;
                 }
 
-                Cliente cliente = new Cliente(
-                        nomeField.getText().trim(),
-                        cpfField.getText().trim(),
-                        telefoneField.getText().trim(),
-                        unidadeField.getText().trim(),
-                        enderecoField.getText().trim()
-                );
+                Funcionario funcinario = new Funcionario();
+                Cliente cliente = funcinario.criarCliente(nomeField.getText(),
+                        cpfField.getText(),
+                        telefoneField.getText(),
+                        unidadeField.getText(),
+                        enderecoField.getText());
 
                 GerenciadorClientes.adicionarCliente(cliente);
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");

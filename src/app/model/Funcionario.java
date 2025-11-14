@@ -6,6 +6,17 @@ import java.io.Serializable;
 public class Funcionario extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Cliente cliente;
+    private OrdemDeServico os;
+
+    public Funcionario(String nome, String cpf, String numeroTel, Cliente cliente, OrdemDeServico os) {
+        super(nome, cpf, numeroTel);
+        this.cliente = cliente;
+        this.os = os;
+    }
+
+    public Funcionario() {}
+
     private static String nomeSelecionado;
     private static final String[] FUNCIONARIOS = {"Yan", "Isaque", "Maurício"};
 
@@ -26,6 +37,17 @@ public class Funcionario extends Pessoa implements Serializable {
         }
 
         JOptionPane.showMessageDialog(null, "Bem-vindo, " + nomeSelecionado + "!");
+    }
+
+    public Cliente criarCliente(String nome, String cpf, String numeroTel, String unidade, String endereco) {
+        Cliente novocliente = new Cliente(nome, cpf, numeroTel, unidade, endereco);
+        System.out.println("Funcionário" + getFuncionarioAtual() + " criou o cliente: " + nome);
+        return novocliente;
+    }
+
+    public OrdemDeServico criarOS(String descricao, String horaminuto, String data, double valor) {
+        OrdemDeServico novaOS = new OrdemDeServico(descricao, horaminuto, data, valor);
+        return novaOS;
     }
 
     public static String getFuncionarioAtual() {

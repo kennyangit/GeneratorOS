@@ -25,7 +25,7 @@ public class TelaVerOS extends JFrame {
 
         List<OrdemDeServico> ordens = GerenciadorOS.getOrdens();
 
-        String[] colunas = {"ID da OS", "Cliente", "CPF", "Telefone", "Unidade", "Endereço", "Descrição"};
+        String[] colunas = {"ID da OS", "Cliente", "CPF", "Telefone", "Unidade", "Endereço","Descrição"};
         DefaultTableModel model = new DefaultTableModel(colunas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
