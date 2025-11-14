@@ -24,6 +24,9 @@ public class OrdemDeServico implements Serializable {
         this.valor = valor;
     }
 
+    public OrdemDeServico() {
+    }
+
     public String getIdOS() {
         return idOS;
     }
@@ -39,4 +42,17 @@ public class OrdemDeServico implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public void setIdOS(String id) { this.idOS = id; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
+
+    public String getData() { return data; }
+    public void setData(String data) { this.data = data; }
+
+    public String getHora() { return horaminuto; }
+    public void setHora(String h) { this.horaminuto = h; }
+
+    public double getValor() { return valor; }
+    public void setValor(double valor) { this.valor = valor; }
+
 }

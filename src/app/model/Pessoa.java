@@ -1,6 +1,10 @@
 package app.model;
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     String nome;
     String cpf;
     String numeroTel;

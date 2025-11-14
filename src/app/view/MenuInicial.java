@@ -9,7 +9,7 @@ import app.model.OrdemDeServico;
 import javax.swing.*;
 import java.util.List;
 
-public class MenuInicial {
+public class MenuInicial{
 
     public static void exibirMenu() {
         Funcionario.selecionarFuncionario();
@@ -108,7 +108,18 @@ public class MenuInicial {
 
             if (nomeEscolhido != null) {
                 Cliente clienteSelecionado = GerenciadorClientes.buscarPorNome(nomeEscolhido);
-                String descricao = JOptionPane.showInputDialog("Digite a descrição da OS:");
+                TelaCadastroOS telaOS = new TelaCadastroOS();
+                telaOS.setVisible(true);
+
+                if (!telaOS.foiConfirmado()) {
+                    JOptionPane.showMessageDialog(null, "Cadastro de OS cancelado.");
+                    return;
+                }
+
+                String descricao = telaOS.getDescricao();
+                String data = telaOS.getData();
+                String hora = telaOS.getHora();
+                double valor = telaOS.getValor();
 
                 if (descricao == null || descricao.trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Descrição da OS não pode ser vazia.", "Atenção", JOptionPane.WARNING_MESSAGE);
@@ -116,16 +127,20 @@ public class MenuInicial {
                 }
 
                 String idOS = GerenciadorOS.gerarProximoIdOS();
-                OrdemDeServico novaOS = new OrdemDeServico(idOS, clienteSelecionado, descricao);
+                OrdemDeServico novaOS = new OrdemDeServico(descricao, data, hora, valor);
+                novaOS.setIdOS(idOS);
+                novaOS.setCliente(clienteSelecionado);
                 GerenciadorOS.adicionarOS(novaOS);
-                JOptionPane.showMessageDialog(
-                        null,
-                        "OS registrada com sucesso!\n" +
-                                "ID da OS: " + idOS + "\n\n" +
-                                clienteSelecionado.toString() + "\n\nDescrição da OS:\n" + descricao,
-                        "Ordem de Serviço Gerada",
+                JOptionPane.showMessageDialog(null,
+                        "ORDEM DE SERVIÇO\n\n" +
+                                "Descrição: " + novaOS.getDescricao() + "\n" +
+                                "Data: " + novaOS.getData() + "\n" +
+                                "Hora: " + novaOS.getHora() + "\n" +
+                                "Valor: R$ " + novaOS.getValor(),
+                        "OS Registrada",
                         JOptionPane.INFORMATION_MESSAGE
                 );
+
             }
 
         } else {

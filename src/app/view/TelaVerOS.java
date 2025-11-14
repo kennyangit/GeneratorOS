@@ -102,7 +102,12 @@ public class TelaVerOS extends JFrame {
             JTextField enderecoField = new JTextField(cliente.getEndereco(), 20);
             JTextArea descricaoArea = new JTextArea(osSelecionada.getDescricao(), 4, 20);
 
+            JTextField dataField = new JTextField(osSelecionada.getData(), 20);
+            JTextField horaField = new JTextField(osSelecionada.getHora(), 20);
+            JTextField valorField = new JTextField(String.valueOf(osSelecionada.getValor()), 20);
+
             JPanel panelEdit = new JPanel(new GridLayout(0, 1, 5, 5));
+
             panelEdit.add(new JLabel("Nome:"));
             panelEdit.add(nomeField);
             panelEdit.add(new JLabel("CPF:"));
@@ -113,11 +118,21 @@ public class TelaVerOS extends JFrame {
             panelEdit.add(unidadeField);
             panelEdit.add(new JLabel("Endereço:"));
             panelEdit.add(enderecoField);
-            panelEdit.add(new JLabel("Descrição:"));
+
+            panelEdit.add(new JLabel("Descrição da OS:"));
             panelEdit.add(new JScrollPane(descricaoArea));
 
+            panelEdit.add(new JLabel("Data (DD/MM/AAAA):"));
+            panelEdit.add(dataField);
+
+            panelEdit.add(new JLabel("Hora (HH:MM):"));
+            panelEdit.add(horaField);
+
+            panelEdit.add(new JLabel("Valor (R$):"));
+            panelEdit.add(valorField);
+
             JScrollPane scrollPane = new JScrollPane(panelEdit);
-            scrollPane.setPreferredSize(new Dimension(500, 400));
+            scrollPane.setPreferredSize(new Dimension(500, 450));
 
             int resultado = JOptionPane.showConfirmDialog(
                     null,
@@ -128,12 +143,17 @@ public class TelaVerOS extends JFrame {
             );
 
             if (resultado == JOptionPane.OK_OPTION) {
+
                 cliente.setNome(nomeField.getText().trim());
                 cliente.setCpf(cpfField.getText().trim());
                 cliente.setTelefone(telefoneField.getText().trim());
                 cliente.setUnidade(unidadeField.getText().trim());
                 cliente.setEndereco(enderecoField.getText().trim());
+
                 osSelecionada.setDescricao(descricaoArea.getText().trim());
+                osSelecionada.setData(dataField.getText().trim());
+                osSelecionada.setHora(horaField.getText().trim());
+                osSelecionada.setValor(Double.parseDouble(valorField.getText().trim()));
 
                 model.setValueAt(cliente.getNome(), linha, 1);
                 model.setValueAt(cliente.getCpf(), linha, 2);
@@ -143,6 +163,7 @@ public class TelaVerOS extends JFrame {
                 model.setValueAt(osSelecionada.getDescricao(), linha, 6);
 
                 GerenciadorOS.salvarOrdens();
+
                 JOptionPane.showMessageDialog(null, "Ordem de Serviço atualizada com sucesso!");
             }
         });
