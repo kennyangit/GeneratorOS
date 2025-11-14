@@ -133,6 +133,9 @@ public class MenuInicial{
                 GerenciadorOS.adicionarOS(novaOS);
                 JOptionPane.showMessageDialog(null,
                         "ORDEM DE SERVIÇO\n\n" +
+                                "Cliente: " + novaOS.getCliente().getNome() + "\n" +
+                                "CPF: " + novaOS.getCliente().getCpf() + "\n" +
+                                "Telefone: " + novaOS.getCliente().getTelefone() + "\n" +
                                 "Descrição: " + novaOS.getDescricao() + "\n" +
                                 "Data: " + novaOS.getData() + "\n" +
                                 "Hora: " + novaOS.getHora() + "\n" +

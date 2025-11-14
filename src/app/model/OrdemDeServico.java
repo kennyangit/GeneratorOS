@@ -1,6 +1,8 @@
 package app.model;
 import java.io.Serializable;
 
+import static app.model.Funcionario.getFuncionarioAtual;
+
 public class OrdemDeServico implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -54,5 +56,4 @@ public class OrdemDeServico implements Serializable {
 
     public double getValor() { return valor; }
     public void setValor(double valor) { this.valor = valor; }
-
 }

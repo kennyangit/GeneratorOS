@@ -41,12 +41,12 @@ public class Funcionario extends Pessoa implements Serializable {
 
     public Cliente criarCliente(String nome, String cpf, String numeroTel, String unidade, String endereco) {
         Cliente novocliente = new Cliente(nome, cpf, numeroTel, unidade, endereco);
-        System.out.println("Funcionário" + getFuncionarioAtual() + " criou o cliente: " + nome);
+        System.out.println("Funcionário " + getFuncionarioAtual() + " criou o cliente: " + nome);
         return novocliente;
     }
 
-    public OrdemDeServico criarOS(String descricao, String horaminuto, String data, double valor) {
-        OrdemDeServico novaOS = new OrdemDeServico(descricao, horaminuto, data, valor);
+    public OrdemDeServico criarOS(String descricao, String data, String horaminuto,  double valor) {
+        OrdemDeServico novaOS = new OrdemDeServico(descricao, data, horaminuto, valor);
         return novaOS;
     }
 
