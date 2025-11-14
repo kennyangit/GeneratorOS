@@ -3,9 +3,8 @@ package app.model;
 import javax.swing.*;
 import java.io.Serializable;
 
-public class Funcionario implements Serializable {
+public class Funcionario extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
-
 
     private static String nomeSelecionado;
     private static final String[] FUNCIONARIOS = {"Yan", "Isaque", "Maurício"};

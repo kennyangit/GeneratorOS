@@ -1,19 +1,15 @@
 package app.model;
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Cliente extends Pessoa implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    private String nome;
-    private String cpf;
-    private String telefone;
     private String unidade;
     private String endereco;
 
-    public Cliente(String nome, String cpf, String telefone, String unidade, String endereco) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
+    public Cliente(String nome, String cpf, String numeroTel, String unidade, String endereco) {
+        super(nome, cpf, numeroTel);
         this.unidade = unidade;
         this.endereco = endereco;
     }
@@ -27,7 +23,7 @@ public class Cliente implements Serializable {
     }
 
     public String getTelefone() {
-        return telefone;
+        return numeroTel;
     }
 
     public String getUnidade() {
@@ -47,7 +43,7 @@ public class Cliente implements Serializable {
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.numeroTel = telefone;
     }
 
     public void setUnidade(String unidade) {
@@ -62,7 +58,7 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Cliente: " + nome +
                 "\nCPF: " + cpf +
-                "\nTelefone: " + telefone +
+                "\nTelefone: " + numeroTel +
                 "\nUnidade: " + unidade +
                 "\nEndereço: " + endereco;
     }
