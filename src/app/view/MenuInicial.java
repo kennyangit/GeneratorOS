@@ -134,6 +134,7 @@ public class MenuInicial{
                                 "Cliente: " + novaOS.getCliente().getNome() + "\n" +
                                 "CPF: " + novaOS.getCliente().getCpf() + "\n" +
                                 "Telefone: " + novaOS.getCliente().getTelefone() + "\n" +
+                                "Unidade: " + novaOS.getCliente().getUnidade() + "\n" +
                                 "Descrição: " + novaOS.getDescricao() + "\n" +
                                 "Data: " + novaOS.getData() + "\n" +
                                 "Hora: " + novaOS.getHora() + "\n" +
