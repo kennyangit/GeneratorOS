@@ -4,7 +4,6 @@ Este é um sistema desktop desenvolvido em **Java** utilizando **Swing** para ge
 O programa permite cadastro de clientes, criação de ordens de serviço, edição, exclusão e visualização de todas as OS registradas.  
 Os dados são **persistidos em arquivos binários (.dat)** via serialização.
 
----
 
 ## 🚀 Funcionalidades
 
@@ -41,54 +40,75 @@ Todos os dados são salvos nos arquivos:
 
 Utilizando **ObjectOutputStream / ObjectInputStream**, garantindo que o usuário não perde os registros ao fechar o programa.
 
----
+##
 
-## 🖥️ Demonstração da Interface
+<h3 align="center">🖥️ Demonstração da Interface</h3>
 
-📌 Tela de Cadastro de Cliente
+##
+
+<p align="center">📌 Tela de Cadastro de Cliente</p>
+
+<p align="center"><img width="600" height="800" alt="telacadastrocliente" src="https://github.com/user-attachments/assets/7345c10e-648f-404c-9d32-ff0323706d29"/></p>
 
 
-📌 Tela de Cadastro de Ordem de Serviço
+##
+
+<p align="center">📌 Tela de Cadastro de Ordem de Serviço</p>
+
+<p align="center"><img width="484" height="470" alt="telacadastroOS" src="https://github.com/user-attachments/assets/c1132c9e-4bf5-46b9-a339-28d0552cf104"/></p>
 
 
-📌 Tela de Visualização das OS
+##
 
----
+<p align="center">📌 Tela OS Gerada</p>
 
-## 🏗️ Tecnologias Utilizadas
+<p align="center"><img width="600" height="403" alt="OSgerada" src="https://github.com/user-attachments/assets/a2368c0b-7f5c-43c6-a7b8-bcb859d6f53e" /></p>
+
+
+##
+
+<p align="center">📌 Tela de Visualização das OS</p>
+<p align="center"><img width="600" height="594" alt="telaOSregistradas" src="https://github.com/user-attachments/assets/d9a421fd-b8b9-45ff-9b1f-341443165fb7"/></p>
+
+##
+
+<h3>🏗️ Tecnologias Utilizadas</h3>
 
 - **Java 21**
 - **Swing**
 - **Serialização com ObjectOutputStream**
 - **IntelliJ IDEA**
 
----
+##
 
-## ▶️ Como Executar
+<h3>▶️ Como Executar</h3>
 
-### 1. Baixe o projeto
+<h4>1. Baixe o projeto</h4>
 https://github.com/kennyangit/GeneratorOS.git
 
-### 2. Abra no IntelliJ IDEA
+<h4>2. Abra no IntelliJ IDEA (recomendado)</h4>
 
-### 3. Compile e execute a classe:
+<h4>3. Compile e execute a classe:</h4>
 Main.java
 
----
+##
 
-## 📦 Funcionalidades Futuras
-- Exportar OS em PDF
-- Login de funcionários
-- Sistema de busca e filtros por cliente
-- Integração com banco de dados (MySQL ou PostgreSQL)
+<h3>📦 Funcionalidades Futuras</h3>
+<ul>
+  <li>Exportar OS em PDF</li>
+  <li>Login de funcionários</li>
+  <li>Sistema de busca e filtros por cliente</li>
+  <li>Integração com banco de dados (MySQL ou PostgreSQL)</li>
+</ul>
 
----
 
-## 👨‍💻 Autores
+##
+
+<h3>👥 Grupo</h3>
 <ul>
   <li><b>Yan Kenny</b></li>
   <li><b>Isaque Pereira</b></li>
   <li><b>Maurício Alves</b></li>
 </ul>
 
----
+##
