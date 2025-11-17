@@ -25,7 +25,7 @@ public class TelaVerOS extends JFrame {
 
         List<OrdemDeServico> ordens = GerenciadorOS.getOrdens();
 
-        String[] colunas = {"ID da OS", "Cliente", "CPF", "Telefone", "Unidade", "Endereço","Descrição"};
+        String[] colunas = {"ID da OS", "Cliente", "CPF", "Telefone", "Unidade", "Endereço","Descrição", "Data", "Hora", "Valor"};
         DefaultTableModel model = new DefaultTableModel(colunas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -46,7 +46,10 @@ public class TelaVerOS extends JFrame {
                     c.getTelefone(),
                     c.getUnidade(),
                     c.getEndereco(),
-                    os.getDescricao()
+                    os.getDescricao(),
+                    os.getData(),
+                    os.getHora(),
+                    os.getValor()
             });
         }
 
@@ -161,6 +164,9 @@ public class TelaVerOS extends JFrame {
                 model.setValueAt(cliente.getUnidade(), linha, 4);
                 model.setValueAt(cliente.getEndereco(), linha, 5);
                 model.setValueAt(osSelecionada.getDescricao(), linha, 6);
+                model.setValueAt(osSelecionada.getData(), linha, 7);
+                model.setValueAt(osSelecionada.getHora(), linha, 8);
+                model.setValueAt(osSelecionada.getValor(), linha, 9);
 
                 GerenciadorOS.salvarOrdens();
 
