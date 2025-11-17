@@ -10,7 +10,6 @@ import java.awt.*;
 import java.util.List;
 
 public class TelaVerOS extends JFrame {
-
     public TelaVerOS() {
         setTitle("Ordens de Serviço Registradas");
         setSize(900, 600);

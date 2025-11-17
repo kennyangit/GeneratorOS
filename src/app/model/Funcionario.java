@@ -42,7 +42,6 @@ public class Funcionario extends Pessoa implements Serializable {
 
     public Cliente criarCliente(String nome, String cpf, String numeroTel, String unidade, String endereco) {
         Cliente novocliente = new Cliente(nome, cpf, numeroTel, unidade, endereco);
-        System.out.println("Funcionário " + getFuncionarioAtual() + " criou o cliente: " + nome);
         return novocliente;
     }
 
@@ -51,9 +50,6 @@ public class Funcionario extends Pessoa implements Serializable {
         OrdemDeServico os = new OrdemDeServico(descricao, data, hora, valor);
         os.setIdOS(id);
         os.setCliente(cliente);
-
-        System.out.println("Funcionário " + getFuncionarioAtual() + " gerou a OS " + id);
-
         return os;
     }
 
