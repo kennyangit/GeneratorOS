@@ -5,6 +5,7 @@ import app.model.Cliente;
 import app.model.Funcionario;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,13 +22,11 @@ public class TelaCadastroCliente extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Painel de título
         JLabel titulo = new JLabel("Cadastro de Cliente", SwingConstants.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 26));
         titulo.setBorder(BorderFactory.createEmptyBorder(30, 0, 10, 0));
         add(titulo, BorderLayout.NORTH);
 
-        // Painel principal de campos
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(30, 250, 100, 250));
 
@@ -41,7 +40,6 @@ public class TelaCadastroCliente extends JFrame {
 
         Dimension fieldSize = new Dimension(250, 25);
 
-        // Campos de texto e labels
         panel.add(new JLabel("Nome:"), gbc);
         gbc.gridy++;
         nomeField = new JTextField();
@@ -49,21 +47,37 @@ public class TelaCadastroCliente extends JFrame {
         nomeField.setPreferredSize(fieldSize);
         panel.add(nomeField, gbc);
 
+
         gbc.gridy++;
         panel.add(new JLabel("CPF:"), gbc);
         gbc.gridy++;
-        cpfField = new JTextField();
+        JFormattedTextField cpfField;
+        try {
+            MaskFormatter mask = new MaskFormatter("###.###.###-##");
+            mask.setPlaceholderCharacter('_');
+            cpfField = new JFormattedTextField(mask);
+        } catch (Exception e) {
+            cpfField = new JFormattedTextField();
+        }
         cpfField.setFont(new Font("Arial", Font.PLAIN, 17));
         cpfField.setPreferredSize(fieldSize);
         panel.add(cpfField, gbc);
 
+
         gbc.gridy++;
         panel.add(new JLabel("Telefone:"), gbc);
         gbc.gridy++;
-        telefoneField = new JTextField();
+        try {
+            MaskFormatter mask = new MaskFormatter("(##) 9####-####");
+            mask.setPlaceholderCharacter('_');
+            telefoneField = new JFormattedTextField(mask);
+        } catch (Exception e) {
+            telefoneField = new JFormattedTextField();
+        }
         telefoneField.setFont(new Font("Arial", Font.PLAIN, 17));
         telefoneField.setPreferredSize(fieldSize);
         panel.add(telefoneField, gbc);
+
 
         gbc.gridy++;
         panel.add(new JLabel("Unidade:"), gbc);
@@ -72,6 +86,7 @@ public class TelaCadastroCliente extends JFrame {
         unidadeField.setFont(new Font("Arial", Font.PLAIN, 17));
         unidadeField.setPreferredSize(fieldSize);
         panel.add(unidadeField, gbc);
+
 
         gbc.gridy++;
         panel.add(new JLabel("Endereço:"), gbc);
@@ -95,20 +110,37 @@ public class TelaCadastroCliente extends JFrame {
         add(panel, BorderLayout.CENTER);
 
         // Botão Salvar
+        JFormattedTextField finalCpfField = cpfField;
+        JFormattedTextField finalTelefoneField = (JFormattedTextField) telefoneField;
         btnSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomeField.getText().isBlank() || cpfField.getText().isBlank() ||
-                        telefoneField.getText().isBlank() || unidadeField.getText().isBlank() ||
-                        enderecoField.getText().isBlank()) {
-                    JOptionPane.showMessageDialog(null, "Preencha todos os campos.", "Atenção",
+                if(nomeField.getText().isBlank()){
+                    JOptionPane.showMessageDialog(null, "Preencha o campo Nome corretamente.", "Atenção",
                             JOptionPane.WARNING_MESSAGE);
                     return;
+                }else if(finalCpfField.getText().equals("___.___.___-__")) {
+                    JOptionPane.showMessageDialog(null, "Preencha o campo CPF corretamente.", "Atenção",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else if(finalTelefoneField.getText().equals("(__) 9____-____")) {
+                    JOptionPane.showMessageDialog(null, "Preencha o campo Telefone corretamente.", "Atenção",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else if(unidadeField.getText().isBlank() ){
+                    JOptionPane.showMessageDialog(null, "Preencha o campo Unidade corretamente.", "Atenção",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }else if (enderecoField.getText().isBlank()) {
+                        JOptionPane.showMessageDialog(null, "Preencha o campo Endereço corretamente.", "Atenção",
+                                JOptionPane.WARNING_MESSAGE);
+                        return;
                 }
+
 
                 Funcionario funcinario = new Funcionario();
                 Cliente cliente = funcinario.criarCliente(nomeField.getText(),
-                        cpfField.getText(),
+                        finalCpfField.getText(),
                         telefoneField.getText(),
                         unidadeField.getText(),
                         enderecoField.getText());

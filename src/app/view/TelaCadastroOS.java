@@ -1,6 +1,7 @@
 package app.view;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
 
 public class TelaCadastroOS extends JDialog {
@@ -28,38 +29,34 @@ public class TelaCadastroOS extends JDialog {
         gbc.weightx = 1.0;
 
         descricao = new JTextField();
-        data = new JTextField();
-        hora = new JTextField();
-        valor = new JTextField();
+        try {
+            MaskFormatter mask = new MaskFormatter("##/##/####");
+            mask.setPlaceholderCharacter('_');
+            data = new JFormattedTextField(mask);
+        } catch (Exception e) {
+            data = new JFormattedTextField();
+        }
+        try {
+            MaskFormatter mask = new MaskFormatter("##:##");
+            mask.setPlaceholderCharacter('_');
+            hora = new JFormattedTextField(mask);
+        } catch (Exception e) {
+            hora = new JFormattedTextField();
+        }
+        valor  = new JTextField();
 
-        //int linha = 0;
-
-        // DESCRIÇÃO
-        //gbc.gridy = linha++;
         painel.add(new JLabel("Descrição:"), gbc);
-        //gbc.gridy = linha++;
         painel.add(descricao, gbc);
 
-        // DATA
-        //gbc.gridy = linha++;
-        painel.add(new JLabel("Data (DD/MM/AAAA):"), gbc);
-        //gbc.gridy = linha++;
+        painel.add(new JLabel("Data:"), gbc);
         painel.add(data, gbc);
 
-        // HORA
-        //gbc.gridy = linha++;
-        painel.add(new JLabel("Hora (HH:MM):"), gbc);
-        //gbc.gridy = linha++;
+        painel.add(new JLabel("Hora:"), gbc);
         painel.add(hora, gbc);
 
-        // VALOR
-        //gbc.gridy = linha++;
-        painel.add(new JLabel("Valor (R$):"), gbc);
-        //gbc.gridy = linha++;
+        painel.add(new JLabel("Valor(R$):"), gbc);
         painel.add(valor, gbc);
 
-        // BOTÕES
-        //gbc.gridy = linha++;
         JPanel botoes = new JPanel(new FlowLayout());
         JButton btnSalvar = new JButton("Salvar");
         JButton btnCancelar = new JButton("Cancelar");
@@ -73,15 +70,31 @@ public class TelaCadastroOS extends JDialog {
 
         add(painel);
 
-        // EVENTOS DOS BOTÕES
-        btnSalvar.addActionListener(e -> {
-            if (descricao.getText().isBlank() ||
-                    data.getText().isBlank() ||
-                    hora.getText().isBlank() ||
-                    valor.getText().isBlank()) {
+        JFormattedTextField finaldata = (JFormattedTextField) data;
+        JFormattedTextField finalhora = (JFormattedTextField) hora;
 
+        btnSalvar.addActionListener(e -> {
+            if(descricao.getText().isBlank() ){
                 JOptionPane.showMessageDialog(this,
-                        "Preencha todos os campos.",
+                        "Preencha o campo descrição corretamente.",
+                        "Atenção",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }else if(finaldata.getText().equals("__/__/____")){
+                JOptionPane.showMessageDialog(this,
+                        "Preencha o campo data corretamente.",
+                        "Atenção",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }else if(finalhora.getText().equals("__:__")){
+                JOptionPane.showMessageDialog(this,
+                        "Preencha o campo hora corretamente.",
+                        "Atenção",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }else if (valor.getText().isBlank() ) {
+                JOptionPane.showMessageDialog(this,
+                        "Preencha o campo valor corretamente.",
                         "Atenção",
                         JOptionPane.WARNING_MESSAGE);
                 return;

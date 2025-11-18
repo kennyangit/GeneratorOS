@@ -130,8 +130,8 @@ public class MenuInicial{
                 OrdemDeServico novaOS = func.criarOS(clienteSelecionado, descricao, data, hora, valor);
                 GerenciadorOS.adicionarOS(novaOS);
                 JOptionPane.showMessageDialog(null,
-                        "ORDEM DE SERVIÇO GERADA\n\n" +
-                                "Funcionário Responsável: " + func.getFuncionarioAtual() + "\n" +
+                        "ORDEM DE SERVIÇO GERADA\n" +
+                                "Funcionário Responsável: " + func.getFuncionarioAtual() + "\n\n" +
                                 "Cliente: " + novaOS.getCliente().getNome() + "\n" +
                                 "CPF: " + novaOS.getCliente().getCpf() + "\n" +
                                 "Telefone: " + novaOS.getCliente().getTelefone() + "\n" +

@@ -60,7 +60,7 @@ public class TelaVerOS extends JFrame {
 
         tabela.getColumnModel().getColumn(0).setPreferredWidth(70);
         tabela.getColumnModel().getColumn(1).setPreferredWidth(120);
-        tabela.getColumnModel().getColumn(6).setPreferredWidth(300);
+        tabela.getColumnModel().getColumn(6).setPreferredWidth(120);
 
         JScrollPane scroll = new JScrollPane(tabela);
         add(scroll, BorderLayout.CENTER);
@@ -124,13 +124,13 @@ public class TelaVerOS extends JFrame {
             panelEdit.add(new JLabel("Descrição da OS:"));
             panelEdit.add(new JScrollPane(descricaoArea));
 
-            panelEdit.add(new JLabel("Data (DD/MM/AAAA):"));
+            panelEdit.add(new JLabel("Data:"));
             panelEdit.add(dataField);
 
-            panelEdit.add(new JLabel("Hora (HH:MM):"));
+            panelEdit.add(new JLabel("Hora:"));
             panelEdit.add(horaField);
 
-            panelEdit.add(new JLabel("Valor (R$):"));
+            panelEdit.add(new JLabel("Valor:"));
             panelEdit.add(valorField);
 
             JScrollPane scrollPane = new JScrollPane(panelEdit);

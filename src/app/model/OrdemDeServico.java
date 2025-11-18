@@ -1,6 +1,6 @@
 package app.model;
-import java.io.Serializable;
 
+import java.io.Serializable;
 import static app.model.Funcionario.getFuncionarioAtual;
 
 public class OrdemDeServico implements Serializable {
