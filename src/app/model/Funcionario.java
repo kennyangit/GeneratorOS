@@ -19,7 +19,7 @@ public class Funcionario extends Pessoa implements Serializable {
     public Funcionario() {}
 
     private static String nomeSelecionado;
-    private static final String[] FUNCIONARIOS = {"Yan", "Isaque", "Maurício"};
+    private static final String[] FUNCIONARIOS = {"Yan Kenny", "Isaque Pereira", "Maurício Alves"};
 
     public static void selecionarFuncionario() {
         nomeSelecionado = (String) JOptionPane.showInputDialog(
